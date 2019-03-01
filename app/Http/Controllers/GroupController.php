@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use App\Models\Provider;
-use App\Repositories\GroupRepository;
-use App\Repositories\ProviderRepository;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -36,8 +34,8 @@ class GroupController extends Controller
      */
     public function insert(Request $request)
     {
-        /** @var GroupRepository $repository */
-        $repository = new GroupRepository();
+        /** @var Group $model */
+        $model = new Group();
 
         $this->validate($request, [
             'name'     => 'required',
@@ -45,14 +43,18 @@ class GroupController extends Controller
             'provider' => 'required'
         ]);
 
-        /** @var boolean $save */
-        $save = $repository->save([
+        /** @var array $record */
+        $record = [
             'name'        => $request->input('name'),
             'price'       => $request->input('price'),
             'provider_id' => $request->input('provider'),
-        ], true);
+        ];
 
-        return $save ?
+        foreach ($record as $key => $value) {
+            $model->$key = $value;
+        }
+
+        return $model->save() ?
             redirect('group')->with('info', trans('response.saved')) :
             redirect('group')->with('error', trans('response.error'));
     }
@@ -64,25 +66,25 @@ class GroupController extends Controller
      */
     public function update($id)
     {
-        /** @var GroupRepository $groupRepository */
-        $groupRepository = new GroupRepository();
+        /** @var Group $modelGroup */
+        $modelGroup = new Group();
 
-        /** @var ProviderRepository $providerRepository */
-        $providerRepository = new ProviderRepository();
+        /** @var Provider $modelProvider */
+        $modelProvider = new Provider();
 
-        /** @var object $provider */
-        $group = $groupRepository->find(['id' => $id], true);
+        /** @var object $group */
+        $group = $modelGroup->find($id);
 
         /** @var object $providers */
-        $providers = $providerRepository->find()->all();
+        $providers = $modelProvider->all();
 
         return view('page.group.update', ['providers' => $providers, 'group' => $group]);
     }
 
     public function edit(Request $request, $id)
     {
-        /** @var GroupRepository $repository */
-        $repository = new GroupRepository();
+        /** @var Group $model */
+        $model = new Group();
 
         $this->validate($request, [
             'name'     => 'required',
@@ -91,7 +93,7 @@ class GroupController extends Controller
         ]);
 
         /** @var boolean $update */
-        $update = $repository->update(['id' => $id], [
+        $update = $model->find($id)->update([
             'name'        => $request->input('name'),
             'price'       => $request->input('price'),
             'provider_id' => $request->input('provider')
@@ -102,18 +104,32 @@ class GroupController extends Controller
             redirect('group')->with('error', trans('response.error'));
     }
 
+    public function show($id)
+    {
+        /** @var Group $model */
+        $model = new Group();
+
+        /** @var object $group */
+        $group = $model->findOrFail($id);
+
+        return view('page.group.show', ['group' => $group]);
+    }
+
     /**
      * @param $id
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function remove($id)
     {
-        /** @var object $group */
-        $group = Group::with('provider')
-            ->where(['id' => $id])
-            ->first();
+        /** @var Group $model */
+        $model = new Group();
 
-        return view('page.group.show', ['group' => $group]);
+        /** @var boolean $remove */
+        $remove = $model->findOrFail($id)->delete();
+
+        return $remove ?
+            redirect('group')->with('info', trans('response.removed')) :
+            redirect('group')->with('error', trans('response.error'));
     }
 }

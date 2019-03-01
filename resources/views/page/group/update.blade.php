@@ -17,13 +17,13 @@
                         @endif
                     </div>
                     <label for="name" class="col-lg-12">
-                        Nombre
+                        <strong>Nombre</strong>
                     </label>
                     <div class="col-lg-12">
                         <input type="text" name="name" class="form-control" id="name" value="{{ $group->name }}" autofocus>
                     </div>
                     <label for="provider" class="col-lg-12">
-                        Proveedor
+                        <strong>Proveedor</strong>
                     </label>
                     <div class="col-lg-12">
                         <select class="form-control" name="provider" id="provider">
@@ -35,7 +35,7 @@
                         </select>
                     </div>
                     <label for="price" class="col-lg-12">
-                        Precio
+                        <strong>Precio</strong>
                     </label>
                     <div class="col-lg-12">
                         <input type="number" name="price" class="form-control" id="price" min="0" value="{{ $group->price }}">

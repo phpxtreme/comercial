@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\ProviderRepository;
+use App\Models\Provider;
 use Illuminate\Http\Request;
 
 class ProviderController extends Controller
@@ -12,11 +12,8 @@ class ProviderController extends Controller
      */
     public function index()
     {
-        /** @var ProviderRepository $repository */
-        $repository = new ProviderRepository();
-
         /** @var object $providers */
-        $providers = $repository->find();
+        $providers = Provider::orderBy('name', 'ASC')->get();
 
         return view('page.provider.index', ['providers' => $providers]);
     }
@@ -28,21 +25,25 @@ class ProviderController extends Controller
      */
     public function insert(Request $request)
     {
-        /** @var ProviderRepository $repository */
-        $repository = new ProviderRepository();
+        /** @var Provider $model */
+        $model = new Provider();
 
         $this->validate($request, [
             'name'  => 'required',
             'price' => 'required'
         ]);
 
-        /** @var boolean $save */
-        $save = $repository->save([
+        /** @var array $record */
+        $record = [
             'name'  => $request->input('name'),
             'price' => $request->input('price')
-        ], true);
+        ];
 
-        return $save ?
+        foreach ($record as $key => $value) {
+            $model->$key = $value;
+        }
+
+        return $model->save() ?
             redirect('provider')->with('info', trans('response.saved')) :
             redirect('provider')->with('error', trans('response.error'));
     }
@@ -54,11 +55,11 @@ class ProviderController extends Controller
      */
     public function update($id)
     {
-        /** @var ProviderRepository $repository */
-        $repository = new ProviderRepository();
+        /** @var Provider $model */
+        $model = new Provider();
 
         /** @var object $provider */
-        $provider = $repository->find(['id' => $id], true);
+        $provider = $model->findOrFail($id);
 
         return view('page.provider.update', ['provider' => $provider]);
     }
@@ -71,8 +72,8 @@ class ProviderController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        /** @var ProviderRepository $repository */
-        $repository = new ProviderRepository();
+        /** @var Provider $model */
+        $model = new Provider();
 
         $this->validate($request, [
             'name'  => 'required',
@@ -80,7 +81,7 @@ class ProviderController extends Controller
         ]);
 
         /** @var boolean $update */
-        $update = $repository->update(['id' => $id], [
+        $update = $model->findOrFail($id)->update([
             'name'  => $request->input('name'),
             'price' => $request->input('price'),
         ]);
@@ -97,22 +98,22 @@ class ProviderController extends Controller
      */
     public function show($id)
     {
-        /** @var ProviderRepository $repository */
-        $repository = new ProviderRepository();
+        /** @var Provider $model */
+        $model = new Provider();
 
         /** @var object $provider */
-        $provider = $repository->find(['id' => $id], true);
+        $provider = $model->findOrFail($id);
 
         return view('page.provider.show', ['provider' => $provider]);
     }
 
     public function remove($id)
     {
-        /** @var ProviderRepository $repository */
-        $repository = new ProviderRepository();
+        /** @var Provider $model */
+        $model = new Provider();
 
         /** @var boolean $remove */
-        $remove = $repository->remove(['id' => $id]);
+        $remove = $model->findOrFail($id)->delete();
 
         return $remove ?
             redirect('provider')->with('info', trans('response.removed')) :

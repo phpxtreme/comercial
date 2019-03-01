@@ -7,13 +7,13 @@
                 <table class="table table-sm table-striped table-hover">
                     <tbody>
                     <tr>
-                        <td>Nombre</td>
+                        <td><strong>Nombre</strong></td>
                         <td>
                             {{ $provider->name }}
                         </td>
                     </tr>
                     <tr>
-                        <td>Precio del Contrato</td>
+                        <td><strong>Precio del Contrato</strong></td>
                         <td>
                             {{ money_format('%+.2n',$provider->price) }}
                         </td>

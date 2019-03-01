@@ -34,8 +34,8 @@
                 <tbody>
                 @if(sizeof($providers->all()) > 0)
                     @foreach($providers->all() as $provider)
-                        <tr>
-                            <td colspan="3" class="text-center text-white bg-dark">
+                        <tr class="table-dark font-weight-bold">
+                            <td colspan="3" class="text-dark text-center">
                                 {{ $provider->name }}
                             </td>
                         </tr>
@@ -51,7 +51,7 @@
                                         <a href='{{ url("group/update/$group->id") }}' class="btn btn-sm btn-primary" title="Modificar">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                        </a><a href="{" class="btn btn-sm btn-danger" title="Eliminar">
+                                        <a href="{{ url("group/remove/$group->id") }}" class="btn btn-sm btn-danger" title="Eliminar">
                                             <i class="fa fa-remove"></i>
                                         </a>
                                     </td>

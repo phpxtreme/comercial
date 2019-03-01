@@ -7,19 +7,19 @@
                 <table class="table table-sm table-striped table-hover">
                     <tbody>
                     <tr>
-                        <td>Proveedor</td>
+                        <td><strong>Proveedor</strong></td>
                         <td>
                             {{ $group->provider->name }}
                         </td>
                     </tr>
                     <tr>
-                        <td>Nombre</td>
+                        <td><strong>Nombre</strong></td>
                         <td>
                             {{ $group->name }}
                         </td>
                     </tr>
                     <tr>
-                        <td>Precio</td>
+                        <td><strong>Precio</strong></td>
                         <td>
                             {{ money_format('%+.2n',$group->price) }}
                         </td>

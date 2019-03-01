@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class GroupController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         /** @var Provider $providers */
@@ -81,6 +84,12 @@ class GroupController extends Controller
         return view('page.group.update', ['providers' => $providers, 'group' => $group]);
     }
 
+    /**
+     * @param Request $request
+     * @param         $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function edit(Request $request, $id)
     {
         /** @var Group $model */
@@ -104,6 +113,11 @@ class GroupController extends Controller
             redirect('group')->with('error', trans('response.error'));
     }
 
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show($id)
     {
         /** @var Group $model */

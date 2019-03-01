@@ -17,7 +17,8 @@ class CurrenciesTableSeeder extends Seeder
 
         array_map(function ($currency) {
             Currency::create([
-                'name' => $currency['name'],
+                'name'        => $currency['name'],
+                'description' => $currency['description'],
             ]);
         }, $currencies);
     }

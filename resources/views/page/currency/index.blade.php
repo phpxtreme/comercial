@@ -46,13 +46,13 @@
                             <td>{{ $currency->name }}</td>
                             <td>{{ $currency->description }}</td>
                             <td class="text-right">
-                                <a href="" class="btn btn-sm btn-success" title="Detalles">
+                                <a href="{{ url("currency/show/$currency->id") }}" class="btn btn-sm btn-success" title="Detalles">
                                     <i class="fa fa-search"></i>
                                 </a>
                                 <a href='{{ url("currency/update/$currency->id") }}' class="btn btn-sm btn-primary" title="Modificar">
                                     <i class="fa fa-pencil"></i>
                                 </a>
-                                </a><a href="" class="btn btn-sm btn-danger" title="Eliminar">
+                                </a><a href="{{ url("currency/remove/$currency->id") }}" class="btn btn-sm btn-danger" title="Eliminar">
                                     <i class="fa fa-remove"></i>
                                 </a>
                             </td>

@@ -107,6 +107,11 @@ class ProviderController extends Controller
         return view('page.provider.show', ['provider' => $provider]);
     }
 
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function remove($id)
     {
         /** @var Provider $model */

@@ -3,7 +3,7 @@
     <div class="row">
         <legend>Agregar Moneda</legend>
         <div class="col-sm-12">
-            <form action="" class="form-horizontal" method="POST">
+            <form action="{{ url('currency/insert') }}" class="form-horizontal" method="POST">
                 @csrf
                 <div class="form-group">
                     <div class="col-lg-12">
@@ -26,7 +26,7 @@
                         <strong>Descripción</strong>
                     </label>
                     <div class="col-lg-12">
-                        <input type="text" name="price" class="form-control" id="description">
+                        <input type="text" name="description" class="form-control" id="description">
                     </div>
                 </div>
                 <div class="form-group">

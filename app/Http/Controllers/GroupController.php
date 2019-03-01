@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
 use App\Models\Provider;
 use App\Repositories\GroupRepository;
 use App\Repositories\ProviderRepository;
@@ -99,5 +100,20 @@ class GroupController extends Controller
         return $update ?
             redirect('group')->with('info', trans('response.saved')) :
             redirect('group')->with('error', trans('response.error'));
+    }
+
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($id)
+    {
+        /** @var object $group */
+        $group = Group::with('provider')
+            ->where(['id' => $id])
+            ->first();
+
+        return view('page.group.show', ['group' => $group]);
     }
 }

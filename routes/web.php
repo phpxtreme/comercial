@@ -30,3 +30,4 @@ Route::get('group/create', 'GroupController@create');
 Route::post('group/insert', 'GroupController@insert');
 Route::get('group/update/{id}', 'GroupController@update');
 Route::post('group/edit/{id}', 'GroupController@edit');
+Route::get('group/show/{id}', 'GroupController@show');

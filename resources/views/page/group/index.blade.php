@@ -45,7 +45,7 @@
                                     <td>{{ $group->name }}</td>
                                     <td>{{ money_format('%+.2n',$group->price) }}</td>
                                     <td class="text-right">
-                                        <a href="" class="btn btn-sm btn-success" title="Detalles">
+                                        <a href="{{ url("group/show/$group->id") }}" class="btn btn-sm btn-success" title="Detalles">
                                             <i class="fa fa-search"></i>
                                         </a>
                                         <a href='{{ url("group/update/$group->id") }}' class="btn btn-sm btn-primary" title="Modificar">

@@ -23,7 +23,7 @@
                         <a class="nav-link" href="{{ url('provider') }}">Proveedores</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="{{ url('group') }}">Grupos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Pricing</a>

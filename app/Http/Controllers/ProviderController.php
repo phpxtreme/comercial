@@ -35,12 +35,12 @@ class ProviderController extends Controller
             'name' => 'required'
         ]);
 
-        /** @var boolean $create */
-        $create = $repository->create([
+        /** @var boolean $save */
+        $save = $repository->save([
             'name' => $request->input('name')
         ], true);
 
-        return $create ?
+        return $save ?
             redirect('provider')->with('info', trans('response.saved')) :
             redirect('provider')->with('error', trans('response.error'));
     }

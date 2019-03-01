@@ -17,7 +17,7 @@ class ProviderRepository extends _Base implements _Interface
         return $one ? $model->first() : $model;
     }
 
-    public function create($opts = [], $check = false)
+    public function save($opts = [], $check = false)
     {
         $model = new Provider();
 
@@ -32,6 +32,17 @@ class ProviderRepository extends _Base implements _Interface
         }
 
         return $model->save() ? true : false;
+    }
+
+    public function create($opts = [], $check = false)
+    {
+        if ($check) {
+            if ($this->select($opts, true)) {
+                return false;
+            }
+        }
+
+        return Provider::create($opts);
     }
 
     public function remove($opts = [])

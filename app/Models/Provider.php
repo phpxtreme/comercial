@@ -12,4 +12,12 @@ class Provider extends Model
      * @var string
      */
     protected $table = 'providers';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function groups()
+    {
+        return $this->hasMany(Group::class);
+    }
 }

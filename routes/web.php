@@ -23,3 +23,6 @@ Route::get('provider/update/{id}', 'ProviderController@update');
 Route::post('provider/edit/{id}', 'ProviderController@edit');
 Route::get('provider/show/{id}', 'ProviderController@show');
 Route::get('provider/remove/{id}', 'ProviderController@remove');
+
+// Groups
+Route::get('group', 'GroupController@index');

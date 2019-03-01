@@ -26,3 +26,4 @@ Route::get('provider/remove/{id}', 'ProviderController@remove');
 
 // Groups
 Route::get('group', 'GroupController@index');
+Route::get('group/create', 'GroupController@create');

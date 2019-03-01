@@ -4,14 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProvidersTable extends Migration
+class CreateGroupsTable extends Migration
 {
     /**
-     * Providers Table
+     * Groups Table
      *
      * @var string
      */
-    private $table = 'providers';
+    private $table = 'groups';
 
     /**
      * Run the migrations.
@@ -23,7 +23,8 @@ class CreateProvidersTable extends Migration
         Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('name');
+            $table->text('name')
+                ->nullable(false);
 
             $table->integer('price')
                 ->nullable(false);
@@ -31,7 +32,13 @@ class CreateProvidersTable extends Migration
             $table->boolean('active')
                 ->default(true);
 
+            $table->integer('provider_id')
+                ->nullable(false);
+
             $table->timestamps();
+
+            $table->foreign('provider_id')
+                ->references('id')->on('providers');
         });
     }
 

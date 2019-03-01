@@ -37,7 +37,7 @@ class ProviderRepository extends _Base implements _Interface
     public function create($opts = [], $check = false)
     {
         if ($check) {
-            if ($this->select($opts, true)) {
+            if ($this->find($opts, true)) {
                 return false;
             }
         }

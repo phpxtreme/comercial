@@ -47,4 +47,47 @@ class MeasurementController extends Controller
             redirect('measurement')->with('info', trans('response.saved')) :
             redirect('measurement')->with('error', trans('response.error'));
     }
+
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function update($id)
+    {
+        /** @var Measurement $model */
+        $model = new Measurement();
+
+        /** @var object $measurement */
+        $measurement = $model->findOrFail($id);
+
+        return view('page.measurement.update', ['measurement' => $measurement]);
+    }
+
+    /**
+     * @param Request $request
+     * @param         $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function edit(Request $request, $id)
+    {
+        /** @var Measurement $model */
+        $model = new Measurement();
+
+        $this->validate($request, [
+            'name'        => 'required',
+            'description' => 'required',
+        ]);
+
+        /** @var boolean $update */
+        $update = $model->findOrFail($id)->update([
+            'name'        => $request->input('name'),
+            'description' => $request->input('description'),
+        ]);
+
+        return $update ?
+            redirect('measurement')->with('info', trans('response.saved')) :
+            redirect('measurement')->with('error', trans('response.error'));
+    }
 }

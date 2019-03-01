@@ -46,3 +46,5 @@ Route::get('currency/remove/{id}', 'CurrencyController@remove');
 Route::get('measurement', 'MeasurementController@index');
 Route::view('measurement/create', 'page.measurement.create');
 Route::post('measurement/insert', 'MeasurementController@insert');
+Route::get('measurement/update/{id}', 'MeasurementController@update');
+Route::post('measurement/edit/{id}', 'MeasurementController@edit');

@@ -2524,3 +2524,46 @@ main {
   max-height: 40px;
 }
 
+.card > .table,
+.tab-pane > .table {
+  border-right: 0;
+  border-left: 0;
+  margin-bottom: 0;
+}
+
+.card > .table:last-child,
+.tab-pane > .table:last-child {
+  border-bottom: 0;
+}
+
+.card > .table td:first-child,
+.card > .table th:first-child,
+.tab-pane > .table td:first-child,
+.tab-pane > .table th:first-child {
+  border-left: 0;
+}
+
+.card > .table td:last-child,
+.card > .table th:last-child,
+.tab-pane > .table td:last-child,
+.tab-pane > .table th:last-child {
+  border-right: 0;
+}
+
+.card > .table tr:first-child td,
+.card > .table tr:first-child th,
+.tab-pane > .table tr:first-child td,
+.tab-pane > .table tr:first-child th {
+  border-top: 0;
+}
+
+.card > .table tr:last-child td,
+.tab-pane > .table tr:last-child td {
+  border-bottom: 0;
+}
+
+.card .card-header + .table,
+.tab-pane .card-header + .table {
+  border-top: 0;
+}
+

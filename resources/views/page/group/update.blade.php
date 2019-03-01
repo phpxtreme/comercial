@@ -38,7 +38,7 @@
                         <strong>Precio</strong>
                     </label>
                     <div class="col-lg-12">
-                        <input type="number" name="price" class="form-control" id="price" min="0" value="{{ $group->price }}">
+                        <input type="text" name="price" class="form-control" id="price" min="0" step=".01" value="{{ $group->price }}">
                     </div>
                 </div>
                 <div class="form-group">

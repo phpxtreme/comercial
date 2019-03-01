@@ -26,7 +26,7 @@ class CreateGroupsTable extends Migration
             $table->text('name')
                 ->nullable(false);
 
-            $table->integer('price')
+            $table->float('price')
                 ->nullable(false);
 
             $table->boolean('active')

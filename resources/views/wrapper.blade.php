@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/core.css') }}">
     @yield('stylesheet')
 </head>
-<body>
+<body class="container">
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="{{ route('home') }}">
@@ -25,11 +25,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('group') }}">Grupos</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Configuración
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Monedas</a>
+                            <a class="dropdown-item" href="#">Unidades de Medida</a>
+                        </div>
                     </li>
                 </ul>
             </div>

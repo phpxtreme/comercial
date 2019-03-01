@@ -32,12 +32,14 @@ class ProviderController extends Controller
         $repository = new ProviderRepository();
 
         $this->validate($request, [
-            'name' => 'required'
+            'name'  => 'required',
+            'price' => 'required'
         ]);
 
         /** @var boolean $save */
         $save = $repository->save([
-            'name' => $request->input('name')
+            'name'  => $request->input('name'),
+            'price' => $request->input('price')
         ], true);
 
         return $save ?
@@ -73,12 +75,14 @@ class ProviderController extends Controller
         $repository = new ProviderRepository();
 
         $this->validate($request, [
-            'name' => 'required'
+            'name'  => 'required',
+            'price' => 'required',
         ]);
 
         /** @var boolean $update */
         $update = $repository->update(['id' => $id], [
-            'name' => $request->input('name')
+            'name'  => $request->input('name'),
+            'price' => $request->input('price'),
         ]);
 
         return $update ?

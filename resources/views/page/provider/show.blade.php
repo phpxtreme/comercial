@@ -12,6 +12,12 @@
                             {{ $provider->name }}
                         </td>
                     </tr>
+                    <tr>
+                        <td>Precio del Contrato</td>
+                        <td>
+                            {{ money_format('%+.2n',$provider->price) }}
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

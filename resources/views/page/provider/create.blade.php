@@ -22,6 +22,12 @@
                     <div class="col-lg-12">
                         <input type="text" name="name" class="form-control" id="name" autofocus>
                     </div>
+                    <label for="price" class="col-lg-12">
+                        Precio del Contrato
+                    </label>
+                    <div class="col-lg-12">
+                        <input type="number" name="price" class="form-control" id="price" min="0">
+                    </div>
                 </div>
                 <div class="form-group">
                     <div class="col-lg-12 col-lg-offset-2 text-right">

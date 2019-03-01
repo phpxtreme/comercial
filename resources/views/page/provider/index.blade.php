@@ -34,6 +34,7 @@
                 <tr>
                     <th>#</th>
                     <th>Nombre</th>
+                    <th>Precio Contrato</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -43,6 +44,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $provider->name }}</td>
+                            <td>{{ money_format('%+.2n',$provider->price) }}</td>
                             <td class="text-right">
                                 <a href="{{ url("provider/show/$provider->id") }}" class="btn btn-sm btn-success" title="Detalles">
                                     <i class="fa fa-search"></i>

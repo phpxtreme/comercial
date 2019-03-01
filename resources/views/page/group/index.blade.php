@@ -30,14 +30,27 @@
                 </a>
             </div>
             <table class="table table-sm table-striped table-hover">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
+                <thead></thead>
                 <tbody>
+                @if(sizeof($groups->all()) > 0)
+                    @foreach($groups->all() as $group)
+                        <tr>
+                            <td>{{ $group->name }}</td>
+                            <td>{{ money_format('%+.2n',$group->price) }}</td>
+                            <td class="text-right">
+                                <a href="" class="btn btn-sm btn-success" title="Detalles">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                                <a href='' class="btn btn-sm btn-primary" title="Modificar">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                </a><a href="" class="btn btn-sm btn-danger" title="Eliminar">
+                                    <i class="fa fa-remove"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
                 </tbody>
             </table>
         </div>

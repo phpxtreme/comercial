@@ -1,9 +1,9 @@
 @extends('wrapper')
 @section('content')
     <div class="row">
-        <legend>Agregar Proveedor</legend>
+        <legend>Agregar Moneda</legend>
         <div class="col-sm-12">
-            <form action="{{ url('provider/insert') }}" class="form-horizontal" method="POST">
+            <form action="" class="form-horizontal" method="POST">
                 @csrf
                 <div class="form-group">
                     <div class="col-lg-12">
@@ -23,10 +23,10 @@
                         <input type="text" name="name" class="form-control" id="name" autofocus>
                     </div>
                     <label for="price" class="col-lg-12">
-                        <strong>Precio del Contrato</strong>
+                        <strong>Descripción</strong>
                     </label>
                     <div class="col-lg-12">
-                        <input type="number" name="price" class="form-control" id="price" min="0" step=".01">
+                        <input type="text" name="price" class="form-control" id="description">
                     </div>
                 </div>
                 <div class="form-group">
@@ -34,7 +34,7 @@
                         <button type="submit" class="btn btn-success">
                             Guardar
                         </button>
-                        <a href="{{ url('provider') }}" class="btn btn-info">Regresar</a>
+                        <a href="{{ url('currency') }}" class="btn btn-info">Regresar</a>
                     </div>
                 </div>
             </form>

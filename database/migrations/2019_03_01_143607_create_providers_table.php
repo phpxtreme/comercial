@@ -25,7 +25,7 @@ class CreateProvidersTable extends Migration
 
             $table->string('name');
 
-            $table->integer('price')
+            $table->float('price')
                 ->nullable(false);
 
             $table->boolean('active')

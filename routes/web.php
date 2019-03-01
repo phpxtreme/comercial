@@ -35,3 +35,4 @@ Route::get('group/remove/{id}', 'GroupController@remove');
 
 // Currencies
 Route::get('currency', 'CurrencyController@index');
+Route::view('currency/create', 'page.currency.create');

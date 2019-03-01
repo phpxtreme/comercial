@@ -27,7 +27,7 @@
                             <strong>Precio del Contrato</strong>
                         </label>
                         <div class="col-lg-12">
-                            <input type="number" name="price" class="form-control" id="price" min="0" value="{{ $provider->price }}">
+                            <input type="number" name="price" class="form-control" id="price" min="0" step=".01" value="{{ $provider->price }}">
                         </div>
                     </div>
                     <div class="form-group">

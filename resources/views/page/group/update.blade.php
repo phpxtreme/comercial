@@ -1,9 +1,9 @@
 @extends('wrapper')
 @section('content')
     <div class="row">
-        <legend>Agregar Grupo</legend>
+        <legend>Modificar Grupo</legend>
         <div class="col-sm-12">
-            <form action="{{ url('group/insert') }}" class="form-horizontal" method="POST">
+            <form action="{{ url('group/edit', [$group->id]) }}" class="form-horizontal" method="POST">
                 @csrf
                 <div class="form-group">
                     <div class="col-lg-12">
@@ -20,7 +20,7 @@
                         Nombre
                     </label>
                     <div class="col-lg-12">
-                        <input type="text" name="name" class="form-control" id="name" autofocus>
+                        <input type="text" name="name" class="form-control" id="name" value="{{ $group->name }}" autofocus>
                     </div>
                     <label for="provider" class="col-lg-12">
                         Proveedor
@@ -29,7 +29,7 @@
                         <select class="form-control" name="provider" id="provider">
                             @if(sizeof($providers->all()) > 0)
                                 @foreach($providers->all() as $provider)
-                                    <option value="{{ $provider->id }}">{{ $provider->name }}</option>
+                                    <option value="{{ $provider->id }}" {{ $provider->id == $group->provider->id ? 'selected' : '' }}>{{ $provider->name }}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -38,7 +38,7 @@
                         Precio
                     </label>
                     <div class="col-lg-12">
-                        <input type="number" name="price" class="form-control" id="price" min="0">
+                        <input type="number" name="price" class="form-control" id="price" min="0" value="{{ $group->price }}">
                     </div>
                 </div>
                 <div class="form-group">

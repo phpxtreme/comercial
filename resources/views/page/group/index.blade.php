@@ -48,7 +48,7 @@
                                         <a href="" class="btn btn-sm btn-success" title="Detalles">
                                             <i class="fa fa-search"></i>
                                         </a>
-                                        <a href="" class="btn btn-sm btn-primary" title="Modificar">
+                                        <a href='{{ url("group/update/$group->id") }}' class="btn btn-sm btn-primary" title="Modificar">
                                             <i class="fa fa-pencil"></i>
                                         </a>
                                         </a><a href="{" class="btn btn-sm btn-danger" title="Eliminar">

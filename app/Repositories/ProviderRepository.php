@@ -14,12 +14,11 @@ class ProviderRepository extends _Base implements _Interface
             $model = $model->where([$field => $value]);
         }
 
-        return $one ? $model->first() : $model::all();
+        return $one ? $model->first() : $model;
     }
 
     public function create($opts = [], $check = false)
     {
-        /** @var Provider $model */
         $model = new Provider();
 
         if ($check) {

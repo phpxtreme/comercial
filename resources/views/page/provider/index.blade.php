@@ -38,19 +38,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                @if(sizeof($providers) > 0)
-                    @foreach($providers as $provider)
+                @if(sizeof($providers->all()) > 0)
+                    @foreach($providers->all() as $provider)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $provider->name }}</td>
                             <td class="text-right">
-                                <a href="" class="btn btn-sm btn-success" title="Detalles">
+                                <a href="{{ url("provider/show/$provider->id") }}" class="btn btn-sm btn-success" title="Detalles">
                                     <i class="fa fa-search"></i>
                                 </a>
-                                <a href="" class="btn btn-sm btn-primary" title="Modificar">
+                                <a href='{{ url("provider/update/$provider->id") }}' class="btn btn-sm btn-primary" title="Modificar">
                                     <i class="fa fa-pencil"></i>
                                 </a>
-                                </a><a href="" class="btn btn-sm btn-danger" title="Eliminar">
+                                </a><a href="{{ url("provider/remove/$provider->id") }}" class="btn btn-sm btn-danger" title="Eliminar">
                                     <i class="fa fa-remove"></i>
                                 </a>
                             </td>

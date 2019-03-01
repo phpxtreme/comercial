@@ -13,7 +13,7 @@ class CurrencyController extends Controller
     public function index()
     {
         /** @var Currency $currency */
-        $currency = Currency::all();
+        $currency = Currency::orderBy('name')->get();
 
         return view('page.currency.index', ['currencies' => $currency]);
     }

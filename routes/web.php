@@ -37,3 +37,5 @@ Route::get('group/remove/{id}', 'GroupController@remove');
 Route::get('currency', 'CurrencyController@index');
 Route::view('currency/create', 'page.currency.create');
 Route::post('currency/insert', 'CurrencyController@insert');
+Route::get('currency/update/{id}', 'CurrencyController@update');
+Route::post('currency/edit/{id}', 'CurrencyController@edit');

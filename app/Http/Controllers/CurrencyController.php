@@ -47,4 +47,47 @@ class CurrencyController extends Controller
             redirect('currency')->with('info', trans('response.saved')) :
             redirect('currency')->with('error', trans('response.error'));
     }
+
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function update($id)
+    {
+        /** @var Currency $model */
+        $model = new Currency();
+
+        /** @var object $currency */
+        $currency = $model->findOrFail($id);
+
+        return view('page.currency.update', ['currency' => $currency]);
+    }
+
+    /**
+     * @param Request $request
+     * @param         $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function edit(Request $request, $id)
+    {
+        /** @var Currency $model */
+        $model = new Currency();
+
+        $this->validate($request, [
+            'name'        => 'required',
+            'description' => 'required',
+        ]);
+
+        /** @var boolean $update */
+        $update = $model->findOrFail($id)->update([
+            'name'        => $request->input('name'),
+            'description' => $request->input('description'),
+        ]);
+
+        return $update ?
+            redirect('currency')->with('info', trans('response.saved')) :
+            redirect('currency')->with('error', trans('response.error'));
+    }
 }

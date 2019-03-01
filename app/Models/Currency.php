@@ -12,4 +12,14 @@ class Currency extends Model
      * @var string
      */
     protected $table = 'currencies';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'description'
+    ];
 }

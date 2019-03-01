@@ -31,7 +31,7 @@
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{ url('currency') }}">Monedas</a>
-                            <a class="dropdown-item" href="#">Unidades de Medida</a>
+                            <a class="dropdown-item" href="{{ url('measurement') }}">Unidades de Medida</a>
                         </div>
                     </li>
                 </ul>

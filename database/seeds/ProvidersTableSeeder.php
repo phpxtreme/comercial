@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Group;
-use App\Repositories\ProviderRepository;
+use App\Models\Provider;
 use Illuminate\Database\Seeder;
 
 class ProvidersTableSeeder extends Seeder
@@ -9,16 +9,16 @@ class ProvidersTableSeeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * @param ProviderRepository $providerRepository
+     * @param Provider $provider
      *
      * @return void
      */
-    public function run(ProviderRepository $providerRepository)
+    public function run(Provider $provider)
     {
         /** @var array $providers */
         $providers = config('defaults.providers');
 
-        array_map(function ($array) use ($providerRepository) {
+        array_map(function ($array) use ($provider) {
 
             /** @var array $groups */
             $groups = $array['grupos'];
@@ -27,7 +27,7 @@ class ProvidersTableSeeder extends Seeder
             unset($array['grupos']);
 
             // Create Provider
-            $provider = $providerRepository->create($array, true);
+            $provider = $provider->create($array, true);
 
             // Associate Groups
             foreach ($groups as $group) {

@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="top-navbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('provider') }}">Proveedores</a>
+                        <a class="nav-link" href="{{ url('provider') }}">Proveedores</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Features</a>

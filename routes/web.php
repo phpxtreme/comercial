@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('page.home');
 })->name('home');
 
-Route::get('provider', function () {
-    return view('page.provider');
-})->name('provider');
+// Providers
+Route::get('provider', 'ProviderController@index');
+Route::view('provider/create', 'page.provider.create');
+Route::post('provider/insert', 'ProviderController@insert');

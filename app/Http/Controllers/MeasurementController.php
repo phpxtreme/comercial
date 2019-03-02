@@ -90,4 +90,38 @@ class MeasurementController extends Controller
             redirect('measurement')->with('info', trans('response.saved')) :
             redirect('measurement')->with('error', trans('response.error'));
     }
+
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($id)
+    {
+        /** @var Measurement $model */
+        $model = new Measurement();
+
+        /** @var object $measurement */
+        $measurement = $model->findOrFail($id);
+
+        return view('page.measurement.show', ['measurement' => $measurement]);
+    }
+
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function remove($id)
+    {
+        /** @var Measurement $model */
+        $model = new Measurement();
+
+        /** @var boolean $remove */
+        $remove = $model->findOrFail($id)->delete();
+
+        return $remove ?
+            redirect('measurement')->with('info', trans('response.removed')) :
+            redirect('measurement')->with('error', trans('response.error'));
+    }
 }

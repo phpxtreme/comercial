@@ -48,3 +48,5 @@ Route::view('measurement/create', 'page.measurement.create');
 Route::post('measurement/insert', 'MeasurementController@insert');
 Route::get('measurement/update/{id}', 'MeasurementController@update');
 Route::post('measurement/edit/{id}', 'MeasurementController@edit');
+Route::get('measurement/show/{id}', 'MeasurementController@show');
+Route::get('measurement/remove/{id}', 'MeasurementController@remove');

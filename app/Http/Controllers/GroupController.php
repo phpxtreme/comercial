@@ -143,7 +143,26 @@ class GroupController extends Controller
         $remove = $model->findOrFail($id)->delete();
 
         return $remove ?
-            redirect('group')->with('info', trans('response.removed')) :
-            redirect('group')->with('error', trans('response.error'));
+            redirect()->back()->with('info', trans('response.removed')) :
+            redirect()->back()->with('error', trans('response.error'));
+    }
+
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getProviderGroups($id)
+    {
+        /** @var Group $model */
+        $model = new Group();
+
+        /** @var Provider $providers */
+        $providers = Provider::with('groups')->get();
+
+        /** @var object $groups */
+        $groups = $model->where(['provider_id' => $id])->get();
+
+        return view('page.group.index', ['providers' => $providers, 'groups' => $groups]);
     }
 }

@@ -37,7 +37,7 @@
         @endif
         <div class="col-sm-12">
             <div class="text-right">
-                <a href="{{ url('group') }}" class="btn btn-info">Regresar</a>
+                <a href="{{ \Illuminate\Support\Facades\URL::previous() }}" class="btn btn-info">Regresar</a>
             </div>
         </div>
     </div>

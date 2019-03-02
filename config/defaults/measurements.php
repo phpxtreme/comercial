@@ -8,5 +8,13 @@ return [
     [
         'name'        => 'MTS',
         'description' => 'Metros'
+    ],
+    [
+        'name'        => 'SET',
+        'description' => 'Set'
+    ],
+    [
+        'name'        => 'DIAS',
+        'description' => 'Días'
     ]
 ];

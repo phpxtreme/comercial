@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Group;
+use App\Models\Item;
 use App\Models\Provider;
 use Illuminate\Database\Seeder;
 
@@ -21,10 +22,10 @@ class ProvidersTableSeeder extends Seeder
         array_map(function ($array) use ($provider) {
 
             /** @var array $groups */
-            $groups = $array['grupos'];
+            $groups = $array['groups'];
 
             // Remove elements from the array
-            unset($array['grupos']);
+            unset($array['groups']);
 
             // Create Provider
             $provider = $provider->create($array, true);
@@ -38,6 +39,21 @@ class ProvidersTableSeeder extends Seeder
                     'price'       => $group['price'],
                     'provider_id' => $provider->id,
                 ]);
+
+                // Associate Items to Group
+                if (array_key_exists('items', $group)) {
+                    foreach ($group['items'] as $item) {
+                        Item::create([
+                            'group_id'       => $newGroup->id,
+                            'quantity'       => $item['quantity'],
+                            'measurement_id' => $item['measurement'],
+                            'currency_id'    => $item['currency'],
+                            'description'    => $item['description'],
+                            'model'          => $item['model'],
+                            'price'          => $item['price'],
+                        ]);
+                    }
+                }
             }
         }, $providers);
     }

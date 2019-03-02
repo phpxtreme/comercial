@@ -31,6 +31,7 @@
             </div>
         </div>
         <div class="col-sm-3">
+            <strong>Proveedor</strong>
             <div class="list-group">
                 @if(sizeof($providers->all()) > 0)
                     @foreach($providers->all() as $provider)
@@ -42,6 +43,7 @@
             </div>
         </div>
         <div class="col-sm-9">
+            <strong>Grupos</strong>
             <table class="table table-sm table-striped table-hover">
                 <thead>
                 <tr>
@@ -70,12 +72,6 @@
                                 </td>
                             </tr>
                         @endforeach
-                    @else
-                        <tr>
-                            <td colspan="3" class="text-center">
-                                <span class="text-danger"><strong>VACIO</strong></span>
-                            </td>
-                        </tr>
                     @endif
                 @endisset
                 </tbody>

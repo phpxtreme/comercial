@@ -4,6 +4,8 @@
 // Bootstrap 4
 @import "base/variables";
 @import "themes/cerulean.min.css";
+// Plugins
+@import "~chosen-js/chosen.min.css";
 // Application
 @import "base/base";
 @import "base/custom";

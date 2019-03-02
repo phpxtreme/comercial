@@ -25,6 +25,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('group') }}">Grupos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('item') }}">Items</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Configuración
@@ -38,11 +41,12 @@
             </div>
         </nav>
     </header>
-    <main class="container p-4">
+    <main class="p-4">
         @yield('content')
     </main>
     <footer></footer>
     <script type="text/javascript" src="{{ asset('js/core.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     @yield('javascript')
 </body>
 </html>

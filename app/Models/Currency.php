@@ -22,4 +22,12 @@ class Currency extends Model
         'name',
         'description'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function item()
+    {
+        return $this->hasOne(Item::class);
+    }
 }

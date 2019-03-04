@@ -12,4 +12,20 @@ class Item extends Model
      * @var string
      */
     protected $table = 'items';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function measurement()
+    {
+        return $this->belongsTo(Measurement::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function currency()
+    {
+        return $this->belongsTo(Currency::class);
+    }
 }

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
     <link rel="stylesheet" href="{{ asset('css/core.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/datatables.min.css') }}"/>
     @yield('stylesheet')
 </head>
 <body>
@@ -46,6 +47,7 @@
     </main>
     <footer></footer>
     <script type="text/javascript" src="{{ asset('js/core.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     @yield('javascript')
 </body>

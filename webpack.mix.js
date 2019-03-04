@@ -19,4 +19,3 @@ mix.babel([
 ], 'public/js/core.js');
 mix.sass('resources/sass/core.scss', 'public/css')
 mix.scripts(['resources/js/app.js'], 'public/js/app.js');
-mix.scripts(['resources/js/items.js'], 'public/js/items.js');

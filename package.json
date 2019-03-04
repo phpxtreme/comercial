@@ -18,5 +18,10 @@
         "lodash": "^4.17.5",
         "popper.js": "^1.12",
         "vue": "^2.5.7"
+    },
+    "dependencies": {
+        "bootstrap4c-chosen": "^1.1.0",
+        "sass-svg": "^1.2.0",
+        "sass-svg-uri": "^1.0.0"
     }
 }

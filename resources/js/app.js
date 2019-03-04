@@ -7,8 +7,14 @@ $(document).ready(function () {
     });
 
     // Chosen-JS Plugin
-    $('.chosen-select').chosen({
+    $('select').chosen({
         no_results_text: "Ningún resultado para: ",
         placeholder_text_single: 'Seleccione...'
+    });
+
+    $('table').dataTable({
+        'language': {
+            'url': 'DataTables/i18n/Spanish.json'
+        }
     });
 })

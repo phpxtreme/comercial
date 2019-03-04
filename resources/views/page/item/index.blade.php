@@ -20,7 +20,7 @@
         @endif
         <div class="col-sm-12">
             <div class="pb-2 text-right">
-                <a href="" class="btn btn-sm btn-info">
+                <a href="{{ url('item/create') }}" class="btn btn-sm btn-info">
                     <i class="fa fa-plus"></i>
                     Nuevo
                 </a>
@@ -34,32 +34,36 @@
             <div class="alert alert-info rounded-0">
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="" class="row" method="POST">
+                        <form action="{{ url('item/provider/group/items') }}" method="POST">
                             @csrf
-                            <div class="col-12 col-sm">
-                                <label for="provider">
-                                    <strong>Proveedor</strong>
-                                </label>
-                                <select name="provider-groups" id="provider-groups" class="form-control chosen-select">
-                                    @if(sizeof($providers->all())>0)
-                                        @foreach($providers->all() as $provider)
-                                            <option value="{{ $provider->id }}">{{ $provider->name }}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                            </div>
-                            <div class="col-12 col-sm">
-                                <label for="group">
-                                    <strong>Grupo</strong>
-                                </label>
-                                <select name="group-items" id="group-items" class="form-control chosen-select">
-                                    <option></option>
-                                </select>
-                            </div>
-                            <div class="col-12 col-sm-auto pl-sm-0">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="fa fa-search"></i>
-                                </button>
+                            <div class="form-row">
+                                <div class="col-md-3">
+                                    <label for="provider">
+                                        <strong>Proveedor</strong>
+                                    </label>
+                                    <select name="provider" id="provider" class="form-control">
+                                        <option></option>
+                                        @if(sizeof($providers->all())>0)
+                                            @foreach($providers->all() as $provider)
+                                                <option value="{{ $provider->id }}">{{ $provider->name }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                </div>
+                                <div class="col-md-8">
+                                    <label for="group">
+                                        <strong>Grupo</strong>
+                                    </label>
+                                    <select name="group" id="group" class="form-control">
+                                        <option></option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label></label>
+                                    <button class="btn btn-success btn-block" title="Buscar">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -67,24 +71,75 @@
             </div>
         </div>
         <div class="col-sm-12">
-            <table class="table table-sm table-striped table-hover">
-                <thead>
-                <tr>
-                    <th>Descripción</th>
-                    <th>Cantidad</th>
-                    <th>Unidad</th>
-                    <th>Modelo</th>
-                    <th>Precio</th>
-                    <th>Moneda</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+            @if(session()->has('items'))
+                @if(sizeof(Session::get('items')->all()) > 0)
+                    <table class="table table-sm table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th class="text-center">Cantidad</th>
+                            <th class="text-center">Unidad</th>
+                            <th class="text-center">Modelo</th>
+                            <th>Precio</th>
+                            <th class="text-center">Moneda</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach(Session::get('items')->all() as $item)
+                            <tr>
+                                <td>
+                                    {{ $item->description }}
+                                </td>
+                                <td class="text-center">
+                                    {{ $item->quantity }}
+                                </td>
+                                <td class="text-center">
+                                    {{ $item->measurement->name }}
+                                </td>
+                                <td class="text-center">
+                                    {{ $item->model }}
+                                </td>
+                                <td>
+                                    {{ money_format('%+.2n',$item->price) }}
+                                </td>
+                                <td class="text-center">
+                                    {{ $item->currency->name }}
+                                </td>
+                                <td class="text-right">
+                                    <a href="" class="btn btn-sm btn-success" title="Detalles">
+                                        <i class="fa fa-search"></i>
+                                    </a>
+                                    <a href='' class="btn btn-sm btn-primary" title="Modificar">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a href="" class="btn btn-sm btn-danger" title="Eliminar">
+                                        <i class="fa fa-remove"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                @endif
+            @endif
         </div>
     </div>
 @endsection
 @section('javascript')
-    <script type="text/javascript" src="{{ asset('js/items.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#provider').change(function () {
+                $.get('item/provider/groups/' + $(this).val(), function (data) {
+
+                    $('#group').empty().append("<option></option>").trigger("chosen:updated");
+
+                    $.each(data, function (index, item) {
+                        $('#group').append("<option value='" + item.id + "'>" + item.name + "</option>").trigger("chosen:updated");
+                    })
+                });
+            });
+        });
+    </script>
 @endsection

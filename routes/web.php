@@ -55,3 +55,6 @@ Route::get('measurement/remove/{id}', 'MeasurementController@remove');
 // Items
 Route::get('item', 'ItemController@index');
 Route::get('item/provider/groups/{id}', 'ItemController@getProviderGroups');
+Route::post('item/provider/group/items', 'ItemController@getGroupItems');
+Route::get('item/create', 'ItemController@create');
+Route::post('item/insert', 'ItemController@insert');

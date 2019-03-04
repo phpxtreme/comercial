@@ -1,7 +1,7 @@
 @extends('wrapper')
 @section('content')
     <div class="row">
-        <legend>Buscar Items por Proveedor</legend>
+        <legend>Filtrar Items por Proveedor</legend>
         @if(session('info'))
             <div class="col-sm-12">
                 <div class="alert alert-success">

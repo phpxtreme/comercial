@@ -35,11 +35,12 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th class="">Proveedor</th>
                     <th class="text-center">Fecha</th>
-                    <th class="">Identificador</th>
+                    <th class="col-4">Proveedor</th>
+                    <th class="text-center">Identificador</th>
                     <th class="text-center">Items</th>
-                    <th class="">P. Factura</th>
+                    <th class="">Precio</th>
+                    <th class="">Envío</th>
                     <th class="col-1"></th>
                 </tr>
                 </thead>
@@ -48,11 +49,12 @@
                     @foreach($bills->all() as $bill)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $bill->provider->name }}</td>
                             <td class="text-center">{{ $bill->date }}</td>
-                            <td>{{ $bill->identifier }}</td>
-                            <td class="text-center">{{ $bill->price }}</td>
+                            <td>{{ $bill->provider->name }}</td>
+                            <td class="text-center">{{ $bill->identifier }}</td>
+                            <td class="text-center">TOTAL</td>
                             <td>{{ $bill->price }}</td>
+                            <td>{{ $bill->shippings->name }}</td>
                             <td class="text-right">
                                 <a href="" class="btn btn-sm btn-success" title="Detalles">
                                     <i class="fa fa-search"></i>

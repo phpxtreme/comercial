@@ -32,8 +32,22 @@ class CreateBillsTable extends Migration
             $table->string('identifier')
                 ->nullable(false)
                 ->unique();
-            
+
+            $table->integer('shipping_id')
+                ->nullable(false);
+
+            $table->text('observations')
+                ->nullable(true);
+
             $table->timestamps();
+
+            $table->foreign('provider_id')
+                ->references('id')->on('providers')
+                ->onDelete('cascade');
+
+            $table->foreign('shipping_id')
+                ->references('id')->on('shipping')
+                ->onDelete('cascade');
         });
     }
 

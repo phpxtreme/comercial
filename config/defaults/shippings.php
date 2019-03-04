@@ -6,5 +6,8 @@ return [
     ],
     [
         'name' => 'Marítimo'
+    ],
+    [
+        'name' => 'Ferrocarril'
     ]
 ];

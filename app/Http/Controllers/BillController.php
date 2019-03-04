@@ -18,9 +18,9 @@ class BillController extends Controller
         $modelBill = new Bill();
 
         /** @var object $bills */
-        $bills = $modelBill::all();
+        $bills = $modelBill::with(['provider', 'shippings'])->get();
 
-        return view('page.bill.index', ['bills' => $bills]);
+        return view('page.bill.index', compact('bills'));
     }
 
     /**

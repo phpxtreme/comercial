@@ -21,4 +21,9 @@ class Shipping extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function bill()
+    {
+        return $this->belongsTo(Bill::class);
+    }
 }

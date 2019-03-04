@@ -20,4 +20,9 @@ class Bill extends Model
     {
         return $this->belongsTo(Provider::class);
     }
+
+    public function shippings()
+    {
+        return $this->hasOne(Shipping::class, 'id');
+    }
 }

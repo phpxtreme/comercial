@@ -60,6 +60,9 @@
                             <a class="dropdown-item" href="{{ url('currency') }}">
                                 Monedas
                             </a>
+                            <a class="dropdown-item" href="{{ url('shipping') }}">
+                                Tipos de Envío
+                            </a>
                             <a class="dropdown-item" href="{{ url('measurement') }}">
                                 Unidades de Medida
                             </a>

@@ -67,5 +67,8 @@ Route::view('search-item-group', 'page.item.search.group', ['providers' => \App\
 Route::view('search-item-provider', 'page.item.search.provider', ['providers' => \App\Models\Provider::all()]);
 Route::post('search-item-provider/search', 'ItemController@getProviderItems');
 
+// Shipping Type
+Route::resource('shipping', 'ShippingController');
+
 // Bill
 Route::resource('bill', 'BillController');

@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             CurrenciesTableSeeder::class,
             MeasurementsTableSeeder::class,
             ProvidersTableSeeder::class,
+            ShippingTableSeeder::class,
         ]);
     }
 }

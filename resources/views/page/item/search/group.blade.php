@@ -1,7 +1,7 @@
 @extends('wrapper')
 @section('content')
     <div class="row">
-        <legend>Buscar Items por Proveedor</legend>
+        <legend>Buscar Items por Grupo</legend>
         @if(session('info'))
             <div class="col-sm-12">
                 <div class="alert alert-success">
@@ -30,10 +30,10 @@
             <div class="alert alert-info rounded-0">
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="{{ url('search-item-provider/search') }}" method="POST">
+                        <form action="{{ url('item/provider/group/items') }}" method="POST">
                             @csrf
                             <div class="form-row">
-                                <div class="col-md-11">
+                                <div class="col-md-3">
                                     <label for="provider">
                                         <strong>Proveedor</strong>
                                     </label>
@@ -46,7 +46,15 @@
                                         @endif
                                     </select>
                                 </div>
-                                <div class="col-md-1">
+                                <div class="col-md-8">
+                                    <label for="group">
+                                        <strong>Grupo</strong>
+                                    </label>
+                                    <select name="group" id="group" class="form-control">
+                                        <option></option>
+                                    </select>
+                                </div>
+                                <div class="col">
                                     <label></label>
                                     <button class="btn btn-success btn-block" title="Buscar">
                                         <i class="fa fa-search"></i>
@@ -70,7 +78,7 @@
                             <th class="text-center">Modelo</th>
                             <th>Precio</th>
                             <th class="text-center">Moneda</th>
-                            <th class="col-1"></th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -94,7 +102,7 @@
                                 <td class="text-center">
                                     {{ $item->currency->name }}
                                 </td>
-                                <td class="text-center col-1">
+                                <td class="text-center">
                                     <a href='{{ url("item/show/$item->id") }}' class="btn btn-sm btn-success" title="Detalles">
                                         <i class="fa fa-search"></i>
                                     </a>
@@ -108,4 +116,20 @@
         </div>
     </div>
 @endsection
-@section('javascript')@endsection
+@section('javascript')
+    <script>
+        $(document).ready(function () {
+
+            $('#provider').change(function () {
+                $.get('item/provider/groups/' + $(this).val(), function (data) {
+
+                    $('#group').empty().append("<option></option>").trigger("chosen:updated");
+
+                    $.each(data, function (index, item) {
+                        $('#group').append("<option value='" + item.id + "'>" + item.name + "</option>").trigger("chosen:updated");
+                    })
+                });
+            });
+        });
+    </script>
+@endsection

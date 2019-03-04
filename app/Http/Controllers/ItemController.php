@@ -16,13 +16,19 @@ class ItemController extends Controller
      */
     public function index()
     {
+        /** @var Item $modelItem */
+        $modelItem = new Item();
+
         /** @var Provider $modelProvider */
         $modelProvider = new Provider();
 
         /** @var object $providers */
         $providers = $modelProvider::all();
 
-        return view('page.item.index', ['providers' => $providers]);
+        /** @var object $items */
+        $items = $modelItem::all();
+
+        return view('page.item.index', ['items' => $items, 'providers' => $providers]);
     }
 
     /**
@@ -175,6 +181,42 @@ class ItemController extends Controller
             'currencies'   => $currencies,
             'measurements' => $measurements
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param         $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function edit(Request $request, $id)
+    {
+        /** @var Item $model */
+        $model = new Item();
+
+        $this->validate($request, [
+            'group'       => 'required',
+            'description' => 'required',
+            'quantity'    => 'required',
+            'measurement' => 'required',
+            'price'       => 'required',
+            'currency'    => 'required',
+        ]);
+
+        /** @var boolean $update */
+        $update = $model->findOrFail($id)->update([
+            'group_id'       => $request->input('group'),
+            'description'    => $request->input('description'),
+            'model'          => $request->input('model'),
+            'quantity'       => $request->input('quantity'),
+            'measurement_id' => $request->input('measurement'),
+            'price'          => $request->input('price'),
+            'currency_id'    => $request->input('currency'),
+        ]);
+
+        return $update ?
+            redirect('item')->with('info', trans('response.saved')) :
+            redirect('item')->with('error', trans('response.error'));
     }
 
     /**

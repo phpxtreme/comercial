@@ -34,6 +34,9 @@
                             <a class="dropdown-item" href="{{ url('item') }}">
                                 Items
                             </a>
+                            <a class="dropdown-item" href="{{ url('search-item-group') }}">
+                                Por Grupos
+                            </a>
                             <a class="dropdown-item" href="{{ url('search-item-provider') }}">
                                 Por Proveedor
                             </a>

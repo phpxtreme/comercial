@@ -14,6 +14,21 @@ class Item extends Model
     protected $table = 'items';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'group_id',
+        'description',
+        'model',
+        'quantity',
+        'price',
+        'measurement_id',
+        'currency_id'
+    ];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function measurement()

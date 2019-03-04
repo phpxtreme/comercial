@@ -3,7 +3,7 @@
     <div class="row">
         <legend>Modificar Item</legend>
         <div class="col-sm-12">
-            <form action="" class="form-horizontal" method="POST">
+            <form action="{{ url('item/edit', [$item->id]) }}" class="form-horizontal" method="POST">
                 @csrf
                 <div class="form-group">
                     <div class="col-lg-12">

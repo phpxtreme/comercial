@@ -131,6 +131,7 @@ class ItemController extends Controller
             'measurement' => 'required',
             'currency'    => 'required',
             'price'       => 'required',
+            'unit_price'  => 'required',
         ]);
 
         /** @var array $record */
@@ -142,6 +143,7 @@ class ItemController extends Controller
             'measurement_id' => $request->input('measurement'),
             'currency_id'    => $request->input('currency'),
             'price'          => $request->input('price'),
+            'unit_price'     => $request->input('unit_price'),
         ];
 
         foreach ($record as $key => $value) {
@@ -200,6 +202,7 @@ class ItemController extends Controller
             'quantity'    => 'required',
             'measurement' => 'required',
             'price'       => 'required',
+            'unit_price'  => 'required',
             'currency'    => 'required',
         ]);
 
@@ -211,6 +214,7 @@ class ItemController extends Controller
             'quantity'       => $request->input('quantity'),
             'measurement_id' => $request->input('measurement'),
             'price'          => $request->input('price'),
+            'unit_price'     => $request->input('unit_price'),
             'currency_id'    => $request->input('currency'),
         ]);
 

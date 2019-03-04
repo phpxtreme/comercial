@@ -61,7 +61,7 @@
         <div class="col-sm-12">
             @if(session()->has('items'))
                 @if(sizeof(Session::get('items')->all()) > 0)
-                    <table class="table table-sm table-striped table-hover">
+                    <table class="table table-sm table-striped table-hover table-bordered">
                         <thead>
                         <tr>
                             <th>Descripción</th>
@@ -69,6 +69,7 @@
                             <th class="text-center">Unidad</th>
                             <th class="text-center">Modelo</th>
                             <th>Precio</th>
+                            <th>Unitario</th>
                             <th class="text-center">Moneda</th>
                             <th class="col-1"></th>
                         </tr>
@@ -79,22 +80,25 @@
                                 <td>
                                     {{ $item->description }}
                                 </td>
-                                <td class="text-center">
+                                <td class="col-1 text-center">
                                     {{ $item->quantity }}
                                 </td>
-                                <td class="text-center">
+                                <td class="col-1 text-center">
                                     {{ $item->measurement->name }}
                                 </td>
-                                <td class="text-center">
+                                <td class="col-1 text-center">
                                     {{ $item->model }}
                                 </td>
-                                <td>
+                                <td class="col-1">
+                                    {{ money_format('%+.2n',$item->unit_price) }}
+                                </td>
+                                <td class="col-1">
                                     {{ money_format('%+.2n',$item->price) }}
                                 </td>
-                                <td class="text-center">
+                                <td class="col-1 text-center">
                                     {{ $item->currency->name }}
                                 </td>
-                                <td class="text-center col-1">
+                                <td class="text-center">
                                     <a href='{{ url("item/show/$item->id") }}' class="btn btn-sm btn-success" title="Detalles">
                                         <i class="fa fa-search"></i>
                                     </a>

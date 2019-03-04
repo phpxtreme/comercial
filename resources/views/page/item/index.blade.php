@@ -32,13 +32,14 @@
         </div>
         <div class="col-sm-12">
             @if(sizeof($items->all()) > 0)
-                <table class="table table-sm table-striped table-hover">
+                <table class="table table-sm table-striped table-hover table-bordered">
                     <thead>
                     <tr>
                         <th>Descripción</th>
                         <th class="text-center">Cantidad</th>
                         <th class="text-center">Unidad</th>
                         <th class="text-center">Modelo</th>
+                        <th>Unitario</th>
                         <th>Precio</th>
                         <th class="text-center">Moneda</th>
                         <th class="col-1"></th>
@@ -50,19 +51,22 @@
                             <td>
                                 {{ $item->description }}
                             </td>
-                            <td class="text-center">
+                            <td class="col-1 text-center">
                                 {{ $item->quantity }}
                             </td>
-                            <td class="text-center">
+                            <td class="col-1 text-center">
                                 {{ $item->measurement->name }}
                             </td>
-                            <td class="text-center">
+                            <td class="col-1 text-center">
                                 {{ $item->model }}
                             </td>
-                            <td>
+                            <td class="col-1">
+                                {{ money_format('%+.2n',$item->unit_price) }}
+                            </td>
+                            <td class="col-1">
                                 {{ money_format('%+.2n',$item->price) }}
                             </td>
-                            <td class="text-center">
+                            <td class="col-1 text-center">
                                 {{ $item->currency->name }}
                             </td>
                             <td class="text-right col-1">

@@ -26,22 +26,22 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('group') }}">Grupos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('item') }}">Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('item') }}">Facturas</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Items
+                            Filtros
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{ url('item') }}">
-                                Items
-                            </a>
                             <a class="dropdown-item" href="{{ url('search-item-group') }}">
-                                Por Grupos
+                                Items por Grupos
                             </a>
                             <a class="dropdown-item" href="{{ url('search-item-provider') }}">
-                                Por Proveedor
-                            </a>
-                            <a class="dropdown-item" href="{{ url('search-item-advanced') }}">
-                                Búsqueda Avanzada
+                                Items por Proveedores
                             </a>
                         </div>
                     </li>

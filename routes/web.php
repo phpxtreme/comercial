@@ -32,7 +32,7 @@ Route::get('group/update/{id}', 'GroupController@update');
 Route::post('group/edit/{id}', 'GroupController@edit');
 Route::get('group/show/{id}', 'GroupController@show');
 Route::get('group/remove/{id}', 'GroupController@remove');
-Route::get('group/provider/groups/{id}', 'GroupController@getProviderGroups');
+Route::post('group/provider/groups', 'GroupController@getProviderGroups');
 
 // Currencies
 Route::get('currency', 'CurrencyController@index');

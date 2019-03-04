@@ -16,7 +16,13 @@ class GroupController extends Controller
         /** @var Provider $providers */
         $providers = Provider::with('groups')->get();
 
-        return view('page.group.index', ['providers' => $providers]);
+        /** @var Group $groups */
+        $groups = Group::with('provider')->get();
+
+        return view('page.group.index', [
+            'groups'    => $groups,
+            'providers' => $providers
+        ]);
     }
 
     /**
@@ -148,11 +154,11 @@ class GroupController extends Controller
     }
 
     /**
-     * @param $id
+     * @param Request $request
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getProviderGroups($id)
+    public function getProviderGroups(Request $request)
     {
         /** @var Group $model */
         $model = new Group();
@@ -161,7 +167,9 @@ class GroupController extends Controller
         $providers = Provider::with('groups')->get();
 
         /** @var object $groups */
-        $groups = $model->where(['provider_id' => $id])->get();
+        $groups = $request->provider == 0 ?
+            $model->all()
+            : $model->where(['provider_id' => $request->only('provider')])->get();
 
         return view('page.group.index', ['providers' => $providers, 'groups' => $groups]);
     }

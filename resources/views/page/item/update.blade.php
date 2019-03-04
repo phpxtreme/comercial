@@ -81,6 +81,14 @@
                     </div>
                     <div class="col-md-3">
                         <label for="price" class="col-lg-12">
+                            <strong>Precio Unitario</strong>
+                        </label>
+                        <div class="col-lg-12">
+                            <input type="number" name="unit_price" class="form-control" id="unit_price" min="0" step=".01" value="{{ $item->unit_price }}">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="price" class="col-lg-12">
                             <strong>Precio</strong>
                         </label>
                         <div class="col-lg-12">

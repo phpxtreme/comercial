@@ -30,24 +30,45 @@
                 </a>
             </div>
         </div>
-        <div class="col-sm-3">
-            <strong>Proveedor</strong>
-            <div class="list-group">
-                @if(sizeof($providers->all()) > 0)
-                    @foreach($providers->all() as $provider)
-                        <a href='{{ url("group/provider/groups/$provider->id") }}' class="list-group-item list-group-item-action">
-                            {{ $provider->name }}
-                        </a>
-                    @endforeach
-                @endif
+        <div class="col-sm-12">
+            <div class="alert alert-info rounded-0">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form action="{{ url("group/provider/groups") }}" method="POST">
+                            @csrf
+                            <div class="form-row">
+                                <div class="col-md-11">
+                                    <label for="provider">
+                                        <strong>Proveedor</strong>
+                                    </label>
+                                    <select name="provider" id="provider" class="form-control">
+                                        <option></option>
+                                        <option value="0">Todos</option>
+                                        @if(sizeof($providers->all())>0)
+                                            @foreach($providers->all() as $provider)
+                                                <option value="{{ $provider->id }}">{{ $provider->name }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                </div>
+                                <div class="col-1">
+                                    <label></label>
+                                    <button class="btn btn-success btn-block" title="Buscar">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-sm-9">
-            <strong>Grupos</strong>
+        <div class="col-sm-12">
             <table class="table table-sm table-striped table-hover">
                 <thead>
                 <tr>
                     <th>Nombre</th>
+                    <th>Proveedor</th>
                     <th>Precio</th>
                     <th></th>
                 </tr>
@@ -58,6 +79,7 @@
                         @foreach($groups->all() as $group)
                             <tr>
                                 <td>{{ $group->name }}</td>
+                                <td>{{ $group->provider->name }}</td>
                                 <td>{{ money_format('%+.2n',$group->price) }}</td>
                                 <td class="text-right">
                                     <a href="{{ url("group/show/$group->id") }}" class="btn btn-sm btn-success" title="Detalles">

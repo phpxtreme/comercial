@@ -157,10 +157,24 @@ class ItemController extends Controller
         /** @var Item $model */
         $model = new Item();
 
+        /** @var Provider $providers */
+        $providers = new Provider();
+
+        /** @var Currency $currencies */
+        $currencies = new Currency();
+
+        /** @var Measurement $measurements */
+        $measurements = new Measurement();
+
         /** @var object $item */
         $item = $model->findOrFail($id);
 
-        return view('page.item.update', ['item' => $item]);
+        return view('page.item.update', [
+            'item'         => $item,
+            'providers'    => $providers,
+            'currencies'   => $currencies,
+            'measurements' => $measurements
+        ]);
     }
 
     /**

@@ -58,6 +58,7 @@ Route::get('item/provider/groups/{id}', 'ItemController@getProviderGroups');
 Route::post('item/provider/group/items', 'ItemController@getGroupItems');
 Route::get('item/create', 'ItemController@create');
 Route::post('item/insert', 'ItemController@insert');
+Route::get('item/update/{id}', 'ItemController@update');
 Route::get('item/show/{id}', 'ItemController@show');
 Route::get('item/remove/{id}', 'ItemController@remove');
 // + Search Items

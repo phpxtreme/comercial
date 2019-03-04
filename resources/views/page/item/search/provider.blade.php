@@ -90,7 +90,7 @@
                                     <a href='{{ url("item/show/$item->id") }}' class="btn btn-sm btn-success" title="Detalles">
                                         <i class="fa fa-search"></i>
                                     </a>
-                                    <a href='' class="btn btn-sm btn-primary" title="Modificar">
+                                    <a href='{{ url("item/update/$item->id") }}' class="btn btn-sm btn-primary" title="Modificar">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                     <a href='{{ url("item/remove/$item->id") }}' class="btn btn-sm btn-danger" title="Eliminar">

@@ -1,9 +1,9 @@
 @extends('wrapper')
 @section('content')
     <div class="row">
-        <legend>Agregar Item</legend>
+        <legend>Modificar Item</legend>
         <div class="col-sm-12">
-            <form action="{{ url('item/insert') }}" class="form-horizontal" method="POST">
+            <form action="" class="form-horizontal" method="POST">
                 @csrf
                 <div class="form-group">
                     <div class="col-lg-12">
@@ -18,28 +18,22 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-3">
+                    <div class="col-md-12">
                         <label for="provider" class="col-lg-12">
-                            <strong>Proveedor</strong>
-                        </label>
-                        <div class="col-lg-12">
-                            <select class="form-control" name="provider" id="provider">
-                                <option></option>
-                                @if(sizeof($providers->all()) > 0)
-                                    @foreach($providers->all() as $provider)
-                                        <option value="{{ $provider->id }}">{{ $provider->name }}</option>
-                                    @endforeach
-                                @endif
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <label for="group" class="col-lg-12">
-                            <strong>Grupo</strong>
+                            <strong>Proveedor / Grupo</strong>
                         </label>
                         <div class="col-lg-12">
                             <select class="form-control" name="group" id="group">
                                 <option></option>
+                                @if(sizeof($providers->all()) > 0)
+                                    @foreach($providers->all() as $provider)
+                                        <optgroup label="{{ $provider->name }}" class="font-weight-bold text-danger">
+                                            @foreach($provider->groups as $group)
+                                                <option value="{{ $group->id }}" {{ $group->id == $item->group->id ? 'selected' : '' }}>{{ $group->name }}</option>
+                                            @endforeach
+                                        </optgroup>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                     </div>
@@ -50,7 +44,7 @@
                             <strong>Descripción</strong>
                         </label>
                         <div class="col-lg-12">
-                            <input type="text" name="description" class="form-control" id="description" autofocus>
+                            <input type="text" name="description" class="form-control" id="description" value="{{ $item->description }}" autofocus>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -58,7 +52,7 @@
                             <strong>Modelo</strong>
                         </label>
                         <div class="col-lg-12">
-                            <input type="text" name="model" class="form-control" id="model">
+                            <input type="text" name="model" class="form-control" id="model" value="{{ $item->model }}">
                         </div>
                     </div>
                 </div>
@@ -68,7 +62,7 @@
                             <strong>Cantidad</strong>
                         </label>
                         <div class="col-lg-12">
-                            <input type="number" name="quantity" class="form-control" id="quantity" min="0">
+                            <input type="number" name="quantity" class="form-control" id="quantity" min="0" value="{{ $item->quantity }}">
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -79,7 +73,7 @@
                             <select class="form-control" name="measurement" id="measurement">
                                 @if(sizeof($measurements->all()) > 0)
                                     @foreach($measurements->all() as $measurement)
-                                        <option value="{{ $measurement->id }}">{{ $measurement->name }}</option>
+                                        <option value="{{ $measurement->id }}" {{ $measurement->id == $item->measurement->id ? 'selected' : '' }}>{{ $measurement->name }}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -90,7 +84,7 @@
                             <strong>Precio</strong>
                         </label>
                         <div class="col-lg-12">
-                            <input type="number" name="price" class="form-control" id="price" min="0" step=".01">
+                            <input type="number" name="price" class="form-control" id="price" min="0" step=".01" value="{{ $item->price }}">
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -101,7 +95,7 @@
                             <select class="form-control" name="currency" id="currency">
                                 @if(sizeof($currencies->all()) > 0)
                                     @foreach($currencies->all() as $currency)
-                                        <option value="{{ $currency->id }}">{{ $currency->name }}</option>
+                                        <option value="{{ $currency->id }}" {{ $currency->id == $item->currency->id ? 'selected' : '' }}>{{ $currency->name }}</option>
                                     @endforeach
                                 @endif
                             </select>

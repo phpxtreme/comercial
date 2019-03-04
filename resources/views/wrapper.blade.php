@@ -30,7 +30,7 @@
                         <a class="nav-link" href="{{ url('item') }}">Items</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('item') }}">Facturas</a>
+                        <a class="nav-link" href="{{ url('bill') }}">Facturas</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -43,6 +43,13 @@
                             <a class="dropdown-item" href="{{ url('search-item-provider') }}">
                                 Items por Proveedores
                             </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Reportes
+                        </a>
+                        <div class="dropdown-menu">
                         </div>
                     </li>
                     <li class="nav-item dropdown">

@@ -43,13 +43,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><strong>Prcio Unitario</strong></td>
+                        <td><strong>Precio Unitario</strong></td>
                         <td>
                             {{ money_format('%+.2n',$item->unit_price) }}
                         </td>
                     </tr>
                     <tr>
-                        <td><strong>Prcio</strong></td>
+                        <td><strong>Precio</strong></td>
                         <td>
                             {{ money_format('%+.2n',$item->price) }}
                         </td>

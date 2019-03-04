@@ -66,3 +66,6 @@ Route::get('item/remove/{id}', 'ItemController@remove');
 Route::view('search-item-group', 'page.item.search.group', ['providers' => \App\Models\Provider::all()]);
 Route::view('search-item-provider', 'page.item.search.provider', ['providers' => \App\Models\Provider::all()]);
 Route::post('search-item-provider/search', 'ItemController@getProviderItems');
+
+// Bill
+Route::resource('bill', 'BillController');

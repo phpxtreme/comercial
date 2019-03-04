@@ -68,8 +68,8 @@
                             <th class="text-center">Cantidad</th>
                             <th class="text-center">Unidad</th>
                             <th class="text-center">Modelo</th>
+                            <th>P. Unitario</th>
                             <th>Precio</th>
-                            <th>Unitario</th>
                             <th class="text-center">Moneda</th>
                             <th class="col-1"></th>
                         </tr>

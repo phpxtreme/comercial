@@ -30,4 +30,12 @@ class Provider extends Model
     {
         return $this->hasMany(Group::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bills()
+    {
+        return $this->hasMany(Bill::class);
+    }
 }

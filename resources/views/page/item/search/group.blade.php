@@ -76,7 +76,7 @@
                             <th class="text-center">Cantidad</th>
                             <th class="text-center">Unidad</th>
                             <th class="text-center">Modelo</th>
-                            <th>Unitario</th>
+                            <th>P. Unitario</th>
                             <th>Precio</th>
                             <th class="text-center">Moneda</th>
                             <th></th>

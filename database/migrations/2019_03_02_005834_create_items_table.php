@@ -33,7 +33,7 @@ class CreateItemsTable extends Migration
                 ->nullable(false);
 
             $table->string('model')
-                ->nullable(false);
+                ->nullable(true);
 
             $table->float('price')
                 ->nullable(false);

@@ -31,4 +31,12 @@ class Group extends Model
     {
         return $this->belongsTo(Provider::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
 }

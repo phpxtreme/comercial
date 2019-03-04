@@ -62,6 +62,31 @@ class ItemController extends Controller
     }
 
     /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function getProviderItems(Request $request)
+    {
+        /** @var Item $modelItem */
+        $modelItem = new Item();
+
+        /** @var Group $modelGroup */
+        $modelGroup = new Group();
+
+        /** @var integer $provider */
+        $provider = $request->only('provider');
+
+        /** @var object $providerGroups */
+        $providerGroups = $modelGroup->where(['provider_id' => $provider])->get();
+
+        /** @var object $items */
+        $items = $modelItem->whereIn('group_id', $providerGroups->pluck('id'))->get();
+
+        return redirect()->back()->with('items', $items);
+    }
+
+    /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
@@ -120,5 +145,55 @@ class ItemController extends Controller
         return $model->save() ?
             redirect('item')->with('info', trans('response.saved')) :
             redirect('item')->with('error', trans('response.error'));
+    }
+
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function update($id)
+    {
+        /** @var Item $model */
+        $model = new Item();
+
+        /** @var object $item */
+        $item = $model->findOrFail($id);
+
+        return view('page.item.update', ['item' => $item]);
+    }
+
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($id)
+    {
+        /** @var Item $model */
+        $model = new Item();
+
+        /** @var object $item */
+        $item = $model->findOrFail($id);
+
+        return view('page.item.show', ['item' => $item]);
+    }
+
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function remove($id)
+    {
+        /** @var Item $model */
+        $model = new Item();
+
+        /** @var boolean $remove */
+        $remove = $model->findOrFail($id)->delete();
+
+        return $remove ?
+            redirect()->back()->with('info', trans('response.removed')) :
+            redirect()->back()->with('error', trans('response.error'));
     }
 }

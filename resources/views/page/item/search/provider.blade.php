@@ -1,7 +1,7 @@
 @extends('wrapper')
 @section('content')
     <div class="row">
-        <legend>Items</legend>
+        <legend>Buscar Items por Proveedor</legend>
         @if(session('info'))
             <div class="col-sm-12">
                 <div class="alert alert-success">
@@ -19,25 +19,13 @@
             </div>
         @endif
         <div class="col-sm-12">
-            <div class="pb-2 text-right">
-                <a href="{{ url('item/create') }}" class="btn btn-sm btn-info">
-                    <i class="fa fa-plus"></i>
-                    Nuevo
-                </a>
-                <a href="" class="btn btn-sm btn-warning">
-                    <i class="fa fa-print"></i>
-                    Imprimir
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-12">
             <div class="alert alert-info rounded-0">
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="{{ url('item/provider/group/items') }}" method="POST">
+                        <form action="{{ url('search-item-provider/search') }}" method="POST">
                             @csrf
                             <div class="form-row">
-                                <div class="col-md-3">
+                                <div class="col-md-11">
                                     <label for="provider">
                                         <strong>Proveedor</strong>
                                     </label>
@@ -50,15 +38,7 @@
                                         @endif
                                     </select>
                                 </div>
-                                <div class="col-md-8">
-                                    <label for="group">
-                                        <strong>Grupo</strong>
-                                    </label>
-                                    <select name="group" id="group" class="form-control">
-                                        <option></option>
-                                    </select>
-                                </div>
-                                <div class="col">
+                                <div class="col-md-1">
                                     <label></label>
                                     <button class="btn btn-success btn-block" title="Buscar">
                                         <i class="fa fa-search"></i>
@@ -82,7 +62,7 @@
                             <th class="text-center">Modelo</th>
                             <th>Precio</th>
                             <th class="text-center">Moneda</th>
-                            <th></th>
+                            <th class="col-1"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -106,7 +86,7 @@
                                 <td class="text-center">
                                     {{ $item->currency->name }}
                                 </td>
-                                <td class="text-right">
+                                <td class="text-right col-1">
                                     <a href='{{ url("item/show/$item->id") }}' class="btn btn-sm btn-success" title="Detalles">
                                         <i class="fa fa-search"></i>
                                     </a>
@@ -126,20 +106,4 @@
         </div>
     </div>
 @endsection
-@section('javascript')
-    <script>
-        $(document).ready(function () {
-
-            $('#provider').change(function () {
-                $.get('item/provider/groups/' + $(this).val(), function (data) {
-
-                    $('#group').empty().append("<option></option>").trigger("chosen:updated");
-
-                    $.each(data, function (index, item) {
-                        $('#group').append("<option value='" + item.id + "'>" + item.name + "</option>").trigger("chosen:updated");
-                    })
-                });
-            });
-        });
-    </script>
-@endsection
+@section('javascript')@endsection

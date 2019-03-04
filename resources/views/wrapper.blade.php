@@ -34,8 +34,11 @@
                             <a class="dropdown-item" href="{{ url('item') }}">
                                 Items
                             </a>
-                            <a class="dropdown-item" href="{{ url('search-item') }}">
-                                Buscar un Item
+                            <a class="dropdown-item" href="{{ url('search-item-provider') }}">
+                                Por Proveedor
+                            </a>
+                            <a class="dropdown-item" href="{{ url('search-item-advanced') }}">
+                                Búsqueda Avanzada
                             </a>
                         </div>
                     </li>

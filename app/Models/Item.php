@@ -28,4 +28,12 @@ class Item extends Model
     {
         return $this->belongsTo(Currency::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
 }

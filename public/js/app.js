@@ -14,7 +14,7 @@ $(document).ready(function () {
 
     $('table').dataTable({
         'language': {
-            'url': 'DataTables/i18n/Spanish.json'
+            'url': dataTableLanguage
         }
     });
 })

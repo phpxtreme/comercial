@@ -26,16 +26,30 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('group') }}">Grupos</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('item') }}">Items</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Items
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ url('item') }}">
+                                Items
+                            </a>
+                            <a class="dropdown-item" href="{{ url('search-item') }}">
+                                Buscar un Item
+                            </a>
+                        </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Configuración
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{ url('currency') }}">Monedas</a>
-                            <a class="dropdown-item" href="{{ url('measurement') }}">Unidades de Medida</a>
+                            <a class="dropdown-item" href="{{ url('currency') }}">
+                                Monedas
+                            </a>
+                            <a class="dropdown-item" href="{{ url('measurement') }}">
+                                Unidades de Medida
+                            </a>
                         </div>
                     </li>
                 </ul>
@@ -46,6 +60,9 @@
         @yield('content')
     </main>
     <footer></footer>
+    <script>
+        var dataTableLanguage = '{{ asset('DataTables/i18n/Spanish.json') }}'
+    </script>
     <script type="text/javascript" src="{{ asset('js/core.js') }}"></script>
     <script type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>

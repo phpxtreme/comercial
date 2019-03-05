@@ -29,11 +29,17 @@ class CreateBillsTable extends Migration
             $table->date('date')
                 ->nullable(false);
 
+            $table->float('price')
+                ->nullable(false);
+
             $table->string('identifier')
                 ->nullable(false)
                 ->unique();
 
             $table->integer('shipping_id')
+                ->nullable(false);
+
+            $table->integer('currency_id')
                 ->nullable(false);
 
             $table->text('observations')
@@ -46,7 +52,11 @@ class CreateBillsTable extends Migration
                 ->onDelete('cascade');
 
             $table->foreign('shipping_id')
-                ->references('id')->on('shipping')
+                ->references('id')->on('shippings')
+                ->onDelete('cascade');
+
+            $table->foreign('currency_id')
+                ->references('id')->on('currencies')
                 ->onDelete('cascade');
         });
     }

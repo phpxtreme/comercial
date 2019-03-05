@@ -14,6 +14,10 @@ return [
         'description' => 'Set'
     ],
     [
+        'name'        => 'KG',
+        'description' => 'Kilo Gramo'
+    ],
+    [
         'name'        => 'DIAS',
         'description' => 'Días'
     ]

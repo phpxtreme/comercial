@@ -20,7 +20,7 @@
         @endif
         <div class="col-sm-12">
             <div class="pb-2 text-right">
-                <a href="" class="btn btn-sm btn-info">
+                <a href="{{ asset('bill/create') }}" class="btn btn-sm btn-info">
                     <i class="fa fa-plus"></i>
                     Nuevo
                 </a>
@@ -40,7 +40,7 @@
                     <th class="text-center">Identificador</th>
                     <th class="text-center">Items</th>
                     <th class="">Precio</th>
-                    <th class="">Envío</th>
+                    <th class="text-center">Envío</th>
                     <th class="col-1"></th>
                 </tr>
                 </thead>
@@ -53,8 +53,8 @@
                             <td>{{ $bill->provider->name }}</td>
                             <td class="text-center">{{ $bill->identifier }}</td>
                             <td class="text-center">TOTAL</td>
-                            <td>{{ $bill->price }}</td>
-                            <td>{{ $bill->shippings->name }}</td>
+                            <td>{{ money_format('%+.2n',$bill->price) }}</td>
+                            <td class="text-center">{{ $bill->shipping->name }}</td>
                             <td class="text-right">
                                 <a href="" class="btn btn-sm btn-success" title="Detalles">
                                     <i class="fa fa-search"></i>

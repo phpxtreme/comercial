@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bill;
+use App\Models\Currency;
+use App\Models\Provider;
+use App\Models\Shipping;
 use Illuminate\Http\Request;
 
 class BillController extends Controller
@@ -18,9 +21,9 @@ class BillController extends Controller
         $modelBill = new Bill();
 
         /** @var object $bills */
-        $bills = $modelBill::with(['provider', 'shippings'])->get();
+        $bills = $modelBill::with(['provider', 'shipping'])->get();
 
-        return view('page.bill.index', compact('bills'));
+        return view('page.bill.index', ['bills' => $bills]);
     }
 
     /**
@@ -30,7 +33,20 @@ class BillController extends Controller
      */
     public function create()
     {
-        //
+        /** @var Provider $providers */
+        $providers = Provider::all();
+
+        /** @var Shipping $shippings */
+        $shippings = Shipping::all();
+
+        /** @var Currency $currencies */
+        $currencies = Currency::all();
+
+        return view('page.bill.create', [
+            'providers'  => $providers,
+            'shippings'  => $shippings,
+            'currencies' => $currencies
+        ]);
     }
 
     /**
@@ -42,7 +58,28 @@ class BillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'date'       => 'required',
+            'provider'   => 'required',
+            'identifier' => 'required',
+            'shipping'   => 'required',
+            'price'      => 'required',
+            'currency'   => 'required',
+        ]);
+
+        $record = [
+            'date'         => $request->input('date'),
+            'provider_id'  => $request->input('provider'),
+            'identifier'   => $request->input('identifier'),
+            'shipping_id'  => $request->input('shipping'),
+            'price'        => $request->input('price'),
+            'currency_id'  => $request->input('currency'),
+            'observations' => $request->input('observations')
+        ];
+
+        return Bill::create($record) ?
+            redirect('bill')->with('info', trans('response.saved')) :
+            redirect('bill')->with('error', trans('response.error'));
     }
 
     /**

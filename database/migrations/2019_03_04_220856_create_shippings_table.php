@@ -11,7 +11,7 @@ class CreateShippingsTable extends Migration
      *
      * @var string
      */
-    private $table = 'shipping';
+    private $table = 'shippings';
 
     /**
      * Run the migrations.

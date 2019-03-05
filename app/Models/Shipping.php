@@ -11,7 +11,7 @@ class Shipping extends Model
      *
      * @var string
      */
-    protected $table = 'shipping';
+    protected $table = 'shippings';
 
     /**
      * The attributes that are mass assignable.
